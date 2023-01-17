@@ -8,12 +8,14 @@ import Pokemon from "../components/Pokemon.jsx";
 import Busqueda from "../components/Busqueda.jsx";
 import Filtros from "../components/Filtros.jsx";
 import LayoutPrivate from "../layouts/LayoutPrivate.jsx";
+import Error from "../pages/Error.jsx";
+import Contacto from "../pages/Contacto.jsx";
 
 export const router = createBrowserRouter([
     {
         path: '/',
         element: <Layout />,
-        errorElement: <Home />,
+        errorElement: <Error />,
         children: [
             {
                 path: '/',
@@ -28,6 +30,8 @@ export const router = createBrowserRouter([
                 element: <Login />,
             },
             {
+
+                //Ponemos las rutas privadas
                 element: <LayoutPrivate />,
                 children: [
                     {
@@ -43,6 +47,9 @@ export const router = createBrowserRouter([
                     },{
                         path: '/filtros',
                         element: <Filtros />,
+                    },,{
+                        path: '/contacto',
+                        element: <Contacto />,
                     },
                 ],
             },

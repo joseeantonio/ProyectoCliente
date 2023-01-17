@@ -1,14 +1,12 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-import NavbarNoregistrado from "../components/NavbarNoregistrado.jsx";
 import Footer from "../components/Footer.jsx";
+import Navbar from "../components/Navbar.jsx";
 
 const LayoutPublic = () => {
     return (
         <div>
-            <NavbarNoregistrado />
-            {/* <nav>Navbar</nav> */}
-            {/* <main>Main</main> */}
+            <Navbar />
             <Outlet />
             <Footer />
         </div>

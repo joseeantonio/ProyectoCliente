@@ -3,85 +3,42 @@ import UseFetch from "./UseFetch.jsx";
 import useFetch from "./UseFetch.jsx";
 import Pokemon from "./Pokemon.jsx";
 import {Link, NavLink} from "react-router-dom";
-import FavPokemonsContext from "../Context/FavPokemonsContext.jsx";
+import FavContext from "../Context/FavContext.jsx";
 
 const CardPokemon = ({url}) => {
 
-
-
-
-
-
+    //Almacenamos el pokemon y sus propiedades
     const [pokemon,setPokemon] = useState()
     const estado = useFetch(url)
     const {cargando,data}=estado
+    const heart = "❤️"
 
+    const getPokemon = async () => {
 
-    console.log(pokemon)
-    // const getPokemon = async () => {
-    //
-    //     try {
-    //         const results = await fetch(url);
-    //         const data = await results.json();
-    //         setPokemon(data)
-    //     } catch {
-    //         console.log('error')
-    //     }
-    //
-    // }
-    //
-    // useEffect(()=>{
-    //     getPokemon()
-    // })
+        try {
+            const results = await fetch(url);
+            const data = await results.json();
+            setPokemon(data)
+        } catch {
+            console.log('error')
+        }
 
-
-
-    // if (!estado.cargando){
-    //     console.log(data)
-    // }
-    // const { pokemon } = url;
-    // const { favoritePokemons, actualizarFavPokemons } = useContext(
-    //     FavPokemonsContext
-    // );
-
-    // const [favorites, setFavorites] = useState([]);
-    //
-    // const redHeart = "❤️";
-    // const blackHeart = "🖤";
-    // const heart = favoritePokemons.includes(pokemon.name) ? redHeart : blackHeart;
-
+    }
+    useEffect(()=>{
+        getPokemon()
+    })
 
     const clickHeart = (e) => {
         e.preventDefault();
-        console.log('fav')
+        console.log('favorito el pokemon',pokemon.name)
+        // No se me actualiza los pokemons
     };
-
-
-
-    // const mostrarInfo = (id) => {
-    //     // console.log(id)
-    //
-    //
-    // }
-
-
-    // const { favoritePokemons, actualizarFavPokemons } = useContext(
-    //     FavPokemonsContext
-    // );
-    //
-    // const redHeart = "❤️";
-    // const blackHeart = "🖤";
-    // const heart = favoritePokemons.includes(pokemon) ? redHeart : blackHeart;
-
-
-
-
 
 
     return(
         <div>
-
-
+            {/*Si todavia no ha cargado y cargando es true que imprima cargando */}
+            {/*y cuando termine de cargar imprime lo otro*/}
             {
                 cargando
                 ?
@@ -93,32 +50,20 @@ const CardPokemon = ({url}) => {
                         </div>
                         <div className='card-body'>
                             <img src={data.sprites.front_default} alt="pokemon"/>
-
                         </div>
                         <div className='card-footer'>
                             <p className='card-text text-capitalize'> {data.forms[0].name} </p>
                         </div>
-
-                        {/*<button onClick={clickHeart} className="pokemon-heart-btn">*/}
-                        {/*    <div className="pokemon-favorite">{heart}</div>*/}
-                        {/*</button>*/}
-
-
-
+                        <button onClick={clickHeart} className="pokemon-heart-btn">
+                            <div className="pokemon-favorite">{heart}</div>
+                        </button>
+                        {/*Le paso la id por parametro get*/}
                         <Link to={`/pokemon/${data.id}`}>Ver detalles</Link>
-
-
-                        {/*<button onClick={()=>mostrarInfo(data.id)}>VER</button>*/}
-
-
                         <br/>
                         <br/>
-
                     </div>
             }
         </div>
     )
-
 }
-
 export default CardPokemon

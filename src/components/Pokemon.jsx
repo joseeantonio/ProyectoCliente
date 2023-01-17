@@ -6,17 +6,10 @@ import useFetch from "./UseFetch.jsx";
 const Pokemon = () =>{
 
     const {id} = useParams()
+    //La url con los detalles
     const [urlInfo,setUrlInfo] = useState(`https://pokeapi.co/api/v2/pokemon/${id}`)
-    const [urlEvoluciones,setUrlEvoluciones] = useState(`https://pokeapi.co/api/v2/evolution-chain/${id}/`)
-
     const estado = useFetch(urlInfo)
     const {cargando,data}=estado
-
-
-
-
-
-
 
     return(
         <div>
@@ -33,7 +26,6 @@ const Pokemon = () =>{
                             <img src={data.sprites.front_default} alt="pokemon"/>
                             <p>Foto por detras</p>
                             <img src={data.sprites.back_default} alt="pokemon"/>
-
                         </div>
                         <div className='card-footer'>
                             <p className='card-text text-capitalize'>Nombre : {data.forms[0].name} </p>
@@ -41,14 +33,10 @@ const Pokemon = () =>{
                             <p className='card-text text-capitalize'>Altura: {data.height} </p>
                             <p className='card-text text-capitalize'>Peso: {data.weight} </p>
                         </div>
-
-
-
                     </div>
             }
         </div>
     )
-
 }
 
 export default Pokemon

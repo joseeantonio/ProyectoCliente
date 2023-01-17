@@ -3,12 +3,17 @@ import { Link, NavLink } from 'react-router-dom'
 import Logo from '../img/logo_pokemon.png'
 import {useUserContext} from "../Context/UserContext.jsx";
 
+
 const Navbar = () => {
 
-
+    // Cogemos el valor del usuario
     const { user, setUser } = useUserContext()
 
-
+    //De esta forma si pulssa el boton de cerrar sesion, el usuario sera null por lo que se tendria que
+    //loguear para volver a ver todas las rutas
+    const cerrarSesion = () => {
+        setUser(null)
+    }
 
     return (
         <header>
@@ -19,12 +24,12 @@ const Navbar = () => {
                         {user && (
                             <div>
                                 <li><NavLink to="/pokemons">PERSONAJES</NavLink></li>
-                                <li><NavLink to="/pokemons">NOTICIAS</NavLink></li>
-                                <li><NavLink to="/">PREGUNTAS FRECUENTES</NavLink></li>
+                                <li><NavLink to="/contacto">CONTACTO</NavLink></li>
                             </div>
                         )}
                         {user ? (
-                            <button className='btn btn-dark' >
+                            <button className='btn btn-dark'
+                            onClick={cerrarSesion}>
                                 Cerrar sesión
                             </button>
                         ):(
@@ -40,15 +45,6 @@ const Navbar = () => {
                     document.querySelector('.menu_hamburguesa').classList.toggle('mostrar');
                 }} className="menu_hamburguesa"><i className="fas fa-bars"></i></button>
             </section>
-            <nav className="menu_movil">
-                <ul>
-                    <li><NavLink to="/">PERSONAJES</NavLink></li>
-                    <li><NavLink to="/">NOTICIAS</NavLink></li>
-                    <li><NavLink to="/">PREGUNTAS FRECUENTES</NavLink></li>
-                    <li><NavLink to="/login">INICIAR SESION</NavLink></li>
-                    <li><NavLink to="/register">REGISTRARSE</NavLink></li>
-                </ul>
-            </nav>
         </header>
     )
 }

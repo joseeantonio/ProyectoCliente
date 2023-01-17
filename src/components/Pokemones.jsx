@@ -1,8 +1,7 @@
-import React, {useContext, useState} from "react";
+import React, { useState} from "react";
 import useFetch from "./UseFetch.jsx";
 import Cards from "./Cards.jsx";
 import {Link, NavLink} from "react-router-dom";
-import Busqueda from "./Busqueda.jsx";
 
 const Pokemones = () => {
 
@@ -12,12 +11,30 @@ const Pokemones = () => {
 
 
 
+    const [hora,setHora] = useState()
+
+    //Funcion de la hora
+    const mueveReloj=()=>{
+        const momentoActual= new Date()
+        const hora = momentoActual.getHours()
+        const minuto = momentoActual.getMinutes()
+        const segundo = momentoActual.getSeconds()
+
+        const horaFinal = hora + " : " + minuto + " : " + segundo
+        setHora(horaFinal)
+    }
+    setInterval(mueveReloj,1000)
+
+
 
 
     return(
         <div>
+            <p>Hora actual -> {hora}</p>
+
             <h1>Esta es la pagina de pokemon</h1>
 
+            {/*Mando para otra pagina donde esta la busqueda*/}
             <NavLink to='/busqueda'>¿Quieres buscar pokemons?</NavLink>
 
             {

@@ -6,6 +6,8 @@ const LayoutPrivate = () => {
   const { user } = useUserContext()
   const navigate = useNavigate()
 
+  //Comprobamos si el usuario esta logueado
+
   useEffect(() => {
     if (!user) {
       navigate('/login')

@@ -51,6 +51,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import { useUserContext } from '../Context/UserContext.jsx'
+import register from "./Register.jsx";
 
 const Login = () => {
     const datosInitialState = {
@@ -65,9 +66,11 @@ const Login = () => {
 
     const navigate = useNavigate()
 
+    //Validamos los datos y si son validos hace la siguiente funcion
     const procesarDatos = (e) => {
         e.preventDefault()
         const { email, pass } = datos
+        const expRegEmail =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/
 
         if (!email.trim()) {
             setError('Escribe un email')
@@ -80,37 +83,35 @@ const Login = () => {
         if (pass.length < 6) {
             setError('Escribe una contraseña de 6 o mas carácteres')
             return
-        }
-        if (esregistro) {
-            registrar()
-        } else {
-            login()
+        }if (expRegEmail.test(email)) {
+            iniciarSesion()
+        }else {
+            setError('Escribe un correo correcto')
+            return
         }
     }
 
-    const registrar = async () => {
-        console.log('Registrando...')
+    //Le damos el aviso al usuario de que esta registrado con la herramienta que nos da react 'swal'
+    //Guardamos los datos , modificamos valores y redirigimos
+    const iniciarSesion = async () => {
+        console.log('Iniciando sesion')
         Swal.fire({
-            title: 'Éxito',
-            text: 'Usuario registrado',
-            icon: 'success',
+            text: 'Iniciado sesion con exito',
         })
+
         setUsers([...users, datos])
         setDatos(datosInitialState)
+        localStorage.setItem("email",datos.email)
+        localStorage.setItem("password",datos.pass)
+
+        // console.log(datos.email)
+        // console.log(datos.pass)
         setError(null)
         setUser(true)
-        navigate('/home')
+        navigate('/pokemons')
     }
 
-    const login = async () => {
-        console.log('Logueando...')
-        // Validamos el user
-        setUser(true)
-        setDatos(datosInitialState)
-        setError(null)
-        navigate('/dashboard')
-    }
-
+    //Guardamos los valores de los input
     const handleChange = (e) => {
         setDatos({
             ...datos,
@@ -118,9 +119,15 @@ const Login = () => {
         })
     }
 
+    //Redirigimos a el formulario de registro
+    const register = () =>{
+        navigate('/register')
+    }
+
+
     return (
         <div className='mt-5'>
-            <h3 className='text-center'>{esregistro ? 'Registro' : 'Login'}</h3>
+            <h3 className='text-center'>Login</h3>
             <hr />
             <div className='row justify-content-center'>
                 <div className='col-12 col-sm-8 col-md-6 col-xl-4'>
@@ -128,7 +135,7 @@ const Login = () => {
                         {error && <div className='alert alert-danger'>{error}</div>}
                         <input
                             name='email'
-                            type='email'
+                            type='txt'
                             className='form-control mb-2'
                             placeholder='Introduce el email'
                             onChange={(e) => handleChange(e)}
@@ -143,13 +150,16 @@ const Login = () => {
                             value={datos.pass}
                         />
                         <button className='btn btn-lg btn-dark w-100  mb-2' type='submit'>
-                            {esregistro ? 'Registrar' : 'Login'}
+                            Login
                         </button>
                         <button
                             className='btn btn-sm btn-info w-100  mb-2'
-                            onClick={() => setEsregistro(!esregistro)}
-                            type='button'>
-                            {esregistro ? '¿Ya tienes cuenta?' : '¿No tienes cuenta?'}
+
+                            type='button'
+                        onClick={()=>{
+                            register()
+                        }}>
+                            ¿No tienes cuenta?
                         </button>
                     </form>
                 </div>

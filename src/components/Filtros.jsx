@@ -1,11 +1,13 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import CardPokemon from "./CardPokemon.jsx";
+import {NavLink} from "react-router-dom";
 
 
 const Filtros = () => {
 
 
+    //Definimos los valores de los tipos
     const [filtroPokemons,setFiltroPokemons] = useState([])
     const [tipoSeleccionado,setTipoSeleccionado]=useState({
         grass: false,       //hierba
@@ -29,15 +31,36 @@ const Filtros = () => {
         unknow: false,      //desconocido
         shadow: false,      //sombra
     })
+    const [pokemons,setPokemons] = useState([])
 
+
+    //Esto se ejecuta primero para coger todos los datos
+    const peticionGet = async () => {
+        const baseURL = 'https://pokeapi.co/api/v2/';
+        const res = await fetch(
+            `${baseURL}pokemon?limit=500&offset=0`
+        );
+        const data = await res.json();
+        const promises = data.results.map(async pokemon => {
+            const res = await fetch(pokemon.url);
+            const data = await res.json();
+            return data;
+        });
+        const results = await Promise.all(promises);
+        setPokemons(results)
+    }
+    useEffect(()=>{
+        peticionGet()
+        // console.log(pokemons)
+    },[])
 
     const handleCheckbox =(e)=>{
-
+        //Añadimos el nombre del tipo a nuestra lista
         setTipoSeleccionado({
             ...tipoSeleccionado,
             [e.target.name]: e.target.checked
         })
-
+        //Recorremos y comprobamos los que son del mismo tipo y añadimos a los pokemos sin borrar ninguno
         if (e.target.checked){
             const filtrarResultado = pokemons.filter(pokemon =>
                 pokemon.types
@@ -47,48 +70,21 @@ const Filtros = () => {
             setFiltroPokemons([...filtroPokemons, ...filtrarResultado])
             console.log(filtroPokemons)
         }else {
+            debugger
             const filtrarResultado = filtroPokemons.filter(pokemon =>
                 !pokemon.types
                     .map(type => type.type.name)
                     .includes(e.target.name)
             )
             setFiltroPokemons([...filtrarResultado])
-            console.log(filtroPokemons)
         }
-
     }
-
-
-    const [pokemons,setPokemons] = useState([])
-    const [tipos,setTipos] = useState()
-
-
-    const peticionGet = async () => {
-        const baseURL = 'https://pokeapi.co/api/v2/';
-
-        const res = await fetch(
-            `${baseURL}pokemon?limit=100000&offset=0`
-        );
-        const data = await res.json();
-
-        const promises = data.results.map(async pokemon => {
-            const res = await fetch(pokemon.url);
-            const data = await res.json();
-            return data;
-        });
-        const results = await Promise.all(promises);
-
-        setPokemons(results);}
-
-
-        useEffect(()=>{
-            peticionGet()
-            console.log(pokemons)
-        },[])
 
     return(
         <div>
 
+            <NavLink to='/busqueda'>¿Quieres buscar pokemons?</NavLink>
+            {/*Checkbox con los diferentes tipos de pokemon*/}
             <div className='group-type'>
                 <input
                     type='checkbox'
@@ -252,29 +248,23 @@ const Filtros = () => {
                 <label htmlFor='water'>Agua</label>
             </div>
 
-
-
-
             <div className='card-listaPokemon container'>
                 {
-
+                    // Mostramos los que hemos filtrado
                     filtroPokemons.length ? (
                         filtroPokemons.map(pokemon => (
                             <CardPokemon url={`https://pokeapi.co/api/v2/pokemon/${pokemon.species.name}`}/>
-                            // console.log(`https://pokeapi.co/api/v2/pokemon/1${pokemon.species.name}`)
+
                         ))
                     ) : (
+                        // Si no hay ningun tipo de pokemon filtrado mostramos todos
                         pokemons.map(pokemon => (
                             <CardPokemon url={`https://pokeapi.co/api/v2/pokemon/${pokemon.species.name}`}/>
                         ))
                     )
-
                 }
             </div>
-
-
         </div>
     )
-
 }
 export default Filtros

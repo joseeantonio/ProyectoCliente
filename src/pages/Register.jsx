@@ -1,37 +1,4 @@
-// import React, {useState} from 'react'
-// import {NavLink} from "react-router-dom";
-//
-// const Register = () => {
-//
-//     const [email,setEmail] = useState('');
-//     const [password,setPassword] = useState('');
-//     const [name,setName] = useState();
-//
-//
-//
-//     const handleSubmit = (e) => {
-//         e.preventDefault();
-//         console.log(email);
-//     }
-//
-//
-//     return (
-//         <>
-//             <form onSubmit={handleSubmit}>
-//                 <label for='name'>Nombre</label>
-//                 <input value={name} placeholder='Jose' className='name' name='name' />
-//                 <label htmlFor='email'>correo</label>
-//                 <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder='aaa@gmail.com' className='email' name='email'/>
-//                 <label htmlFor='password'>contraseña</label>
-//                 <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} placeholder='********' className='password' name='password'/>
-//                 <button type='submit'>Iniciar sesion</button>
-//             </form>
-//             <button>¿Ya tienes una cuenta? Iniciar sesion</button>
-//         </>
-//     )
-// }
-//
-// export default Register
+
 
 
 
@@ -42,19 +9,22 @@ import Swal from 'sweetalert2'
 import { useUserContext } from '../Context/UserContext.jsx'
 
 const Login = () => {
+
+    //Creamos los valores predeterminados para los campos del formulario
     const datosInitialState = {
         name: '',
         email: '',
         pass: '',
     }
+
+    //definimos varios valores para modificarlos y guardarlos con el usestate
     const { user, setUser } = useUserContext()
     const [users, setUsers] = useState([])
     const [datos, setDatos] = useState(datosInitialState)
     const [error, setError] = useState(null)
-    const [esregistro, setEsregistro] = useState(false)
-
     const navigate = useNavigate()
 
+    //Validamos los datos y si son validos hace la siguiente funcion
     const procesarDatos = (e) => {
         e.preventDefault()
         const { email, pass ,name } = datos
@@ -79,19 +49,29 @@ const Login = () => {
         }
     }
 
+    //Le damos el aviso al usuario de que esta registrado con la herramienta que nos da react 'swal'
+    //Guardamos los datos , modificamos valores y redirigimos
     const registrar = async () => {
         console.log('Registrando...')
         Swal.fire({
             text: 'Usuario registrado con exito',
-            icon: 'success',
         })
+
         setUsers([...users, datos])
         setDatos(datosInitialState)
+        localStorage.setItem("user",datos.name)
+        localStorage.setItem("email",datos.email)
+        localStorage.setItem("password",datos.pass)
+
+        // console.log(datos.name)
+        // console.log(datos.email)
+        // console.log(datos.pass)
         setError(null)
         setUser(true)
         navigate('/pokemons')
     }
 
+    //Guardamos los valores de los input
     const handleChange = (e) => {
         setDatos({
             ...datos,
@@ -99,13 +79,14 @@ const Login = () => {
         })
     }
 
+    //Redirigimos a el formulario de registro
     const iniciarSesion=() =>{
         navigate('/login')
     }
 
     return (
         <div className='mt-5'>
-            <h3 className='text-center'>{esregistro ? 'Registro' : 'Login'}</h3>
+            <h3 className='text-center'>Registro</h3>
             <hr />
             <div className='row justify-content-center'>
                 <div className='col-12 col-sm-8 col-md-6 col-xl-4'>
@@ -116,7 +97,7 @@ const Login = () => {
                             placeholder='Introduce el nombre'
                             className='form-control mb-2'
                             name='name'
-                            type='txt'
+                            type='text'
                             onChange={(e) => handleChange(e)}
                             value={datos.name}
                         />
