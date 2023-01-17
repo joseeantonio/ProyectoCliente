@@ -1,0 +1,259 @@
+@import "src/styles/imports/reset", "src/styles/imports/variables";
+
+/*HEADER*/
+
+header .menu_ordenador ul li a{ /*Le damos collor blanco a las redirecciones del nav*/
+  color: $blanco;
+}
+header img{ /*Un valor maximo a la imagen del logo*/
+  max-width: 120px;
+}
+.ultimoLi{  /*Seleccionamos el resgistrarse y le creamos la caja con su color y sus estilos*/
+  margin-left: 141px;
+  font-size: 22px;
+}
+.menu_ordenador>ul li{  /*Ponemos todos los li en la misma linea y creamos separacion entre cada uno de ellos*/
+  padding: 15px;
+  display: inline-block;
+}
+.section{ /*Le damos color de fondo ,tamaño atodo lo que es el encabezado y lo alineamos con flex.*/
+  height: 63px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $negro;
+}
+.menu_hamburguesa{
+  background-color: transparent;
+  color: $blanco;
+  display: none;
+  cursor: pointer;
+  font-size: 30px;
+  margin-right: 20px;
+}
+.menu_movil{
+  display: none;
+  background-color: black;
+}
+.menu_movil ul{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.menu_movil li>a{
+  color: $blanco;
+  font-size: 15px;
+  margin: 10px;
+}
+
+
+
+/*MAIN*/
+
+main{ /*adaptamos el ancho y predeterminamos el ancho y metemos imagen de fondo con sus diferentes atributos*/
+  width: 100%;
+  background-color: rgba(24, 95, 202, 0.28);
+}
+main>a{
+  padding: 23px 0px 18px 23px;
+}
+main>h1{
+  font-family: Inter;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 47px;
+  background: #C4C4C4;
+  border-radius: 17px;
+  width: 255px;
+  height: 62px;
+  text-align: center;
+  padding-top: 4px;
+  margin: 0 auto 30px;
+}
+section>img{
+  max-height: 272px;
+  width: auto;
+}
+section{
+  display: flex;
+  justify-content: space-evenly;
+  margin: 0 auto;
+  align-items: center;
+}
+.principal>p{
+  padding-bottom: 20px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  width: 419px;
+}
+.caja{
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto;
+  margin-top: 10px;
+  background: #46AEDB;
+  border-radius: 17px;
+  width: 387px;
+  height: 318px;
+}
+.caja h2{
+  margin-bottom: 20px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 25px;
+  margin-top: 23px;
+  color: $blanco;
+}
+.caja p{
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 25px;
+}
+.debilidadesYtipos{
+  padding: 56px 0px 56px 0px;
+}
+.debilidadesYtipos>div>h3{
+  font-family: Inter;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 25px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.debilidadesYtipos>div>div{
+  display: flex;
+  justify-content: space-around;
+  width: 264px;
+}
+.debilidadesYtipos>div>div>div>p{
+  margin-bottom: 20px;
+  text-align: center;
+  padding-top: 3px;
+  color: $blanco;
+  font-size: 20px;
+}
+.debilidadesYtipos p{
+  border-radius: 5px;
+  width: 97px;
+  height: 29px;
+}
+/*APLICAMOS EL COLOR PARA CADA CUADRO CON SU DEBILIDAD O TIPO*/
+.fuego{
+  background: #FF7A30;
+}
+.volador{
+  background: $volador;
+}
+.psiquico{
+  background: $psiquico;
+}
+.hielo{
+  background:$hielo;
+}
+.planta{
+  background: $planta;
+}
+.veneno{
+  background: $veneno;
+}
+
+
+
+
+/*FOOTER*/
+
+footer{ /*Le indicamos estilos al footer y lo alineamos */
+  background-color: $negro;
+  color: $blanco;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+footer>*{
+  padding: 1.4em;
+}
+
+
+/* APLICO ESTILO A LA BARRA DE SCROLL */
+body::-webkit-scrollbar {
+  width: 17px;
+}
+body::-webkit-scrollbar-track {
+  background: $negro;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: $blanco;
+  border-radius: 20px;
+  border: 5px solid $negro;
+}
+
+
+/*RESPONSIVE*/
+
+/*1024-769*/
+@media screen and (max-width: 1024px) and (min-width: 769px){
+
+  /*HEADER*/
+  .menu_ordenador li{
+    font-size: 12px;
+  }
+  .ultimoLi{
+    margin-left: 146px;
+  }
+}
+
+/*768-0*/
+@media screen and (max-width: 768px) and (min-width: 0px){
+
+  /*HEADER*/
+  .menu_ordenador{
+    display: none;
+  }
+  .menu_hamburguesa{
+    display: block;
+  }
+  .menu_movil.mostrar {
+    display: block;
+  }
+
+
+  /*MAIN*/
+  main>section{
+    display: grid;
+  }
+  section > img{
+    margin: 0 auto 20px;
+    max-width: 220px;
+  }
+  .principal > p{
+    margin: 0 auto;
+    width: 245px;
+  }
+  .caja{
+    width: 255px;
+  }
+  .caja h2{
+    font-size: 23px;
+  }
+  .caja p{
+    font-size: 23px;
+  }
+  .caja{
+    height: 303px;
+  }
+
+
+  /*FOOTER*/
+  footer{
+    display: grid;
+    text-align: center;
+  }
+  footer>*{
+    padding: 0.4em;
+  }
+}

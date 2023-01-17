@@ -1,0 +1,194 @@
+@import "src/styles/imports/reset", "src/styles/imports/variables";
+
+/*HEADER*/
+
+header .menu_ordenador ul li a{ /*Le damos collor blanco a las redirecciones del nav*/
+  color: $blanco;
+}
+header img{ /*Un valor maximo a la imagen del logo*/
+  max-width: 120px;
+}
+.ultimoLi{  /*Seleccionamos el resgistrarse y le creamos la caja con su color y sus estilos*/
+  margin-left: 141px;
+  font-size: 22px;
+}
+.menu_ordenador>ul li{  /*Ponemos todos los li en la misma linea y creamos separacion entre cada uno de ellos*/
+  padding: 15px;
+  display: inline-block;
+}
+.section{ /*Le damos color de fondo ,tamaño atodo lo que es el encabezado y lo alineamos con flex.*/
+  height: 63px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $negro;
+}
+.menu_hamburguesa{
+  background-color: transparent;
+  color: $blanco;
+  display: none;
+  cursor: pointer;
+  font-size: 30px;
+  margin-right: 20px;
+}
+.menu_movil{
+  display: none;
+  background-color: black;
+}
+.menu_movil ul{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.menu_movil li>a{
+  color: $blanco;
+  font-size: 15px;
+  margin: 10px;
+}
+
+
+
+/*MAIN*/
+
+main{ /*adaptamos el ancho y predeterminamos el ancho y metemos imagen de fondo con sus diferentes atributos*/
+  width: 100%;
+  height: 700px;
+  background-image: url("../../../../diseño/RecuperacionMaquetacion/src/assets/img/img_fondo_index.png");
+  background-size: cover;
+  background-position: center;
+}
+main>*{
+  display: flex;
+  justify-content: center;
+}
+a.boton_principal:hover, a.boton_principal:active{ /*Cuando estamos encima se disminuira el tamaño*/
+  font-size: 150%;
+}
+main a{
+  color: $blanco;
+  align-items: center;
+  background: $boton-registrarse;
+  border-radius: 5px;
+  height: 47px;
+  width: 195px;
+  margin: 0 auto;
+  font-size: 27px;
+}
+main p {
+  font-weight: bold;
+  font-size: 27px;
+  line-height: 68px;
+}
+main h1{
+  padding-top: 220px;
+  font-weight: bold;
+  font-size: 52px;
+}
+
+
+/*FOOTER*/
+
+footer{ /*Le indicamos estilos al footer y lo alineamos */
+  background-color: $negro;
+  color: $blanco;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+footer>*{
+  padding: 1.4em;
+}
+
+
+/* APLICO ESTILO A LA BARRA DE SCROLL */
+body::-webkit-scrollbar {
+  width: 17px;
+}
+body::-webkit-scrollbar-track {
+  background: $negro;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: $blanco;
+  border-radius: 20px;
+  border: 5px solid $negro;
+}
+
+
+/*RESPONSIVE*/
+
+/*1024-769*/
+@media screen and (max-width: 1024px) and (min-width: 769px){
+  /*HEADER*/
+  .menu_ordenador li{
+    font-size: 12px;
+  }
+  .ultimoLi{
+    margin-left: 146px;
+  }
+}
+
+/*768-0*/
+@media screen and (max-width: 768px) and (min-width: 0px){ç
+
+  /*HEADER*/
+  .menu_ordenador{
+    display: none;
+  }
+  .menu_hamburguesa{
+    display: block;
+  }
+  .menu_movil.mostrar {
+    display: block;
+  }
+
+
+  /*MAIN*/
+  main a{ /*bajamos el tamaño 4px*/
+    font-size: 16px;
+    height: 43px;
+    width: 187px;
+  }
+  main p{
+    font-size: 16px;
+  }
+  main h1{
+    font-size: 41px;
+  }
+
+
+  /**/FOOTER
+  footer{
+    display: grid;
+    text-align: center;
+  }
+  footer>*{
+    padding: 0.4em;
+  }
+}
+
+
+
+/*MODO CLARO*/
+@media (prefers-color-scheme: light) {
+
+  /*HEADER*/
+  .section {background-color: $blanco;}
+  header .menu_ordenador ul li a {color: $negro}
+  .menu_hamburguesa {color: $negro}
+  header .menu_movil ul {background-color: $blanco}
+  .menu_movil li > a {color: $negro}
+
+
+  /*FOOTER*/
+  footer {background-color: $blanco;color: $negro}
+
+
+  /*BARRA SCROLL*/
+  body::-webkit-scrollbar-track {
+    background: $blanco;
+  }
+  body::-webkit-scrollbar-thumb {
+    background-color: $negro;
+    border: 5px solid $blanco;
+  }
+}

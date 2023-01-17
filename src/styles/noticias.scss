@@ -1,0 +1,194 @@
+@import "src/styles/imports/reset", "src/styles/imports/variables";
+
+/*HEADER*/
+
+header .menu_ordenador ul li a{ /*Le damos collor blanco a las redirecciones del nav*/
+  color: $blanco;
+}
+header img{ /*Un valor maximo a la imagen del logo*/
+  max-width: 120px;
+}
+.ultimoLi{  /*Seleccionamos el resgistrarse y le creamos la caja con su color y sus estilos*/
+  margin-left: 141px;
+  font-size: 22px;
+}
+.menu_ordenador>ul li{  /*Ponemos todos los li en la misma linea y creamos separacion entre cada uno de ellos*/
+  padding: 15px;
+  display: inline-block;
+}
+.section{ /*Le damos color de fondo ,tamaño atodo lo que es el encabezado y lo alineamos con flex.*/
+  height: 63px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $negro;
+}
+.menu_hamburguesa{
+  background-color: transparent;
+  color: $blanco;
+  display: none;
+  cursor: pointer;
+  font-size: 30px;
+  margin-right: 20px;
+}
+.menu_movil{
+  display: none;
+  background-color: black;
+}
+.menu_movil ul{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.menu_movil li>a{
+  color: $blanco;
+  font-size: 15px;
+  margin: 10px;
+}
+
+
+/*MAIN*/
+
+main{
+  background-image: url("../../../../diseño/RecuperacionMaquetacion/src/assets/img/fondo_img_noticias.png");
+  width: 100%;
+  background-repeat:no-repeat ;
+  background-size: cover;
+  background-position: center;
+}
+main>section>img{
+  width: 351px;
+}
+main>section{
+  display: flex;
+  padding-top: 115px;
+  justify-content: center;
+}
+main>section>div{
+  width: 598px;
+  padding-left: 25px;
+}
+main>section h1{
+  font-family: Inter;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+}
+main>section h2{
+  font-family: Inter;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 19px;
+  color: #FF7A30;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+main>section p{
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 19px;
+  line-height: 23px;
+}
+main > section:last-child{
+  padding-bottom: 74px;
+}
+
+
+
+
+/*FOOTER*/
+footer{ /*Le indicamos estilos al footer y lo alineamos */
+  background-color: $negro;
+  color: $blanco;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+footer>*{
+  padding: 1.4em;
+}
+
+
+/* APLICO ESTILO A LA BARRA DE SCROLL */
+body::-webkit-scrollbar {
+  width: 17px;
+}
+body::-webkit-scrollbar-track {
+  background: $negro;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: $blanco;
+  border-radius: 20px;
+  border: 5px solid $negro;
+}
+
+
+
+/*RESPONSIVE*/
+
+/*1024-769*/
+@media screen and (max-width: 1024px) and (min-width: 769px){
+
+  /*HEADER*/
+  .menu_ordenador li{
+    font-size: 12px;
+  }
+  .ultimoLi{
+    margin-left: 146px;
+  }
+
+
+  /*MAIN*/
+  main>section>img{
+    width: 255px;
+  }
+  main > section > div{
+    width: 451px;
+  }
+
+}
+
+/*768-0*/
+@media screen and (max-width: 768px) and (min-width: 0px){
+
+  /*HEADER*/
+  .menu_ordenador{
+    display: none;
+  }
+  .menu_hamburguesa{
+    display: block;
+  }
+  .menu_movil.mostrar {
+    display: block;
+  }
+
+
+  /*MAIN*/
+  main>section{
+    display: grid;
+  }
+  main > section > img{
+    width: 273px;
+    margin: 0 auto;
+  }
+  main > section > div{
+    padding-left: 0px;
+    padding-top: 25px;
+    width: 273px;
+  }
+  main>section:last-child{
+    padding-bottom: 115px;
+  }
+
+
+  /*FOOTER*/
+  footer{
+    display: grid;
+    text-align: center;
+  }
+  footer>*{
+    padding: 0.4em;
+  }
+
+}

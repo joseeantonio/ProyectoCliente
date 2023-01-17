@@ -1,0 +1,240 @@
+@import "src/styles/imports/reset", "src/styles/imports/variables";
+
+
+
+/*HEADER*/
+
+header .menu_ordenador ul li a{ /*Le damos collor blanco a las redirecciones del nav*/
+  color: $blanco;
+}
+header img{ /*Un valor maximo a la imagen del logo*/
+  max-width: 120px;
+}
+.boton{  /*Seleccionamos el resgistrarse y le creamos la caja con su color y sus estilos*/
+  background: $boton-registrarse;
+  border-radius: 5px;
+  text-align: center;
+  margin-right: 15px;
+  padding: 7px;
+}
+.menu_ordenador>ul li{  /*Ponemos todos los li en la misma linea y creamos separacion entre cada uno de ellos*/
+  padding: 15px;
+  display: inline-block;
+}
+.section{ /*Le damos color de fondo ,tamaño atodo lo que es el encabezado y lo alineamos con flex.*/
+  height: 63px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $negro;
+}
+.menu_hamburguesa{
+  background-color: transparent;
+  color: $blanco;
+  display: none;
+  cursor: pointer;
+  font-size: 30px;
+  margin-right: 20px;
+}
+.menu_movil{
+  display: none;
+  background-color: $negro;
+}
+.menu_movil ul{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.menu_movil li>a{
+  color: $blanco;
+  font-size: 15px;
+  margin: 10px;
+}
+
+
+
+/*MAIN*/
+
+main{ /*adaptamos el ancho y predeterminamos el ancho y metemos imagen de fondo con sus diferentes atributos*/
+  width: 100%;
+  height: 700px;
+  background-image: url("../../../../diseño/RecuperacionMaquetacion/src/assets/img/img_fondo_index.png");
+  background-size: cover;
+  background-position: center;
+}
+.caja{
+  text-align: -webkit-center;
+  padding-top: 280px;
+}
+main > .caja > h1 {
+  display: table-cell; /*lo utilizo para centrarlo en medio del fondo de color*/
+  vertical-align: middle;
+  height: 109px;
+  background-color: $rojo_pokeball;
+  color: $blanco;
+  border-radius: 10px;
+  width: 250px;
+  font-size: 48px;
+}
+.pokeball{
+  max-width: 90px;
+  animation: vuelta 7s infinite linear; /*animacion*/
+  margin-top: -100px;
+}
+
+
+
+/*BARRA SCROLL*/
+
+body::-webkit-scrollbar {
+  width: 17px;
+}
+body::-webkit-scrollbar-track {
+  background: $negro;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: $blanco;
+  border-radius: 20px;
+  border: 5px solid $negro;
+}
+
+
+/*Movimiento de vuelta que aplicamos a la pokeball*/
+@keyframes vuelta{
+  from {
+    transform: rotate(0deg)  translate(250px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translate(250px) rotate(-360deg);
+  }
+}
+
+
+/*FOOTER*/
+
+footer{ /*Le indicamos estilos al footer y lo alineamos */
+  background-color: $negro;
+  color: $blanco;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+footer>*{
+  padding: 1.4em;
+}
+
+
+/* APLICO ESTILO A LA BARRA DE SCROLL */
+body::-webkit-scrollbar {
+  width: 17px;
+}
+body::-webkit-scrollbar-track {
+  background: $negro;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: $blanco;
+  border-radius: 20px;
+  border: 5px solid $negro;
+}
+
+
+/*RESPONSIVE*/
+
+/*1024-769*/
+@media screen and (max-width: 1024px) and (min-width: 769px){
+
+  /*HEADER*/
+  .menu_ordenador li{
+    font-size: 12px;
+  }
+
+
+  /*MAIN*/
+  .caja{
+    padding-top: 300px;
+  }
+  main > .caja > h1 {
+    height: 84px;
+    width: 225px;
+    font-size: 42px;
+  }
+  .pokeball{ /*aumentamos tiempo ya que el recorrido ahor va a ser menor*/
+    animation: vuelta 6s infinite linear;
+  }
+  @keyframes vuelta{ /*modificamos el recorrido*/
+    from {
+      transform: rotate(0deg)  translate(200px) rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg) translate(200px) rotate(-360deg);
+    }
+  }
+}
+
+/*768-0*/
+@media screen and (max-width: 768px) and (min-width: 0px){
+
+  /*HEADER*/
+  .menu_ordenador{
+    display: none;
+  }
+  .menu_hamburguesa{
+    display: block;
+  }
+  .menu_movil.mostrar {
+    display: block;
+  }
+
+  /*MAIN*/
+  .pokeball{
+    animation: vuelta 3.2s infinite linear;
+  }
+  .caja{
+    padding-top: 170px;
+  }
+  main > .caja > h1 {
+    height: 64px;
+    width: 209px;
+    font-size: 31px;
+  }
+  .pokeball{
+    margin-top: 130px;
+  }
+  @keyframes vuelta{ /*modificamos el recorrido*/
+    from {
+      transform: rotate(0deg)  translate(90px) rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg) translate(90px) rotate(-360deg);
+    }
+  }
+
+
+  /*FOOTER*/
+  footer{
+    display: grid;
+    text-align: center;
+  }
+  footer>*{
+    padding: 0.4em;
+  }
+
+}
+
+
+
+
+@media (prefers-color-scheme: light) {
+
+  /*HEADER*/
+  .section {background-color: $blanco;}
+  header .menu_ordenador ul li a {color: $negro}
+  .menu_ordenador > ul > li:last-child > a {color: $blanco}
+  .menu_hamburguesa {color: $negro}
+  header .menu_movil ul {background-color: $blanco}
+  .menu_movil li > a {color: $negro}
+
+  /*FOOTER*/
+  footer {background-color: $blanco;color: $negro}
+
+}

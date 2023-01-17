@@ -1,0 +1,193 @@
+@import "src/styles/imports/reset", "src/styles/imports/variables";
+
+/*HEADER*/
+
+header .menu_ordenador ul li a{ /*Le damos collor blanco a las redirecciones del nav*/
+  color: $blanco;
+}
+header img{ /*Un valor maximo a la imagen del logo*/
+  max-width: 120px;
+}
+.ultimoLi{  /*Seleccionamos el resgistrarse y le creamos la caja con su color y sus estilos*/
+  margin-left: 141px;
+  font-size: 22px;
+}
+.menu_ordenador>ul li{  /*Ponemos todos los li en la misma linea y creamos separacion entre cada uno de ellos*/
+  padding: 15px;
+  display: inline-block;
+}
+.section{ /*Le damos color de fondo ,tamaño atodo lo que es el encabezado y lo alineamos con flex.*/
+  height: 63px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $negro;
+}
+.menu_hamburguesa{
+  background-color: transparent;
+  color: $blanco;
+  display: none;
+  cursor: pointer;
+  font-size: 30px;
+  margin-right: 20px;
+}
+.menu_movil{
+  display: none;
+  background-color: black;
+}
+.menu_movil ul{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.menu_movil li>a{
+  color: $blanco;
+  font-size: 15px;
+  margin: 10px;
+}
+
+
+
+/*MAIN*/
+
+main{
+  width: 100%;
+  position: relative;
+  background-image: url("../../../../diseño/RecuperacionMaquetacion/src/assets/img/img_fondo_preguntasFrecuentes.png");
+  background-repeat:no-repeat ;
+  background-size: cover;
+  background-position: center;
+  display: block;
+  align-items: center;
+}
+main>section{
+  padding: 1.8em;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+.texto_grande{ /*Con esto conseguimos un mejor diseño ya que utilizamos el primero de una columna y el ultimo de la otra*/
+  width: 148%;
+  border: solid;
+}
+main>p{
+  font-weight: 100;
+}
+main>section>div{
+  display: block;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 17px;
+  line-height: 17px;
+  color: $blanco;
+  padding: 4.2em;
+}
+main>section>div>h3{
+  font-family: Inter;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 21px;
+  line-height: 28px;
+  text-decoration-line: underline;
+  padding-bottom: 15px;
+  color: $blanco;
+}
+
+
+/*FOOTER*/
+
+footer{ /*Le indicamos estilos al footer y lo alineamos */
+  background-color: $negro;
+  color: $blanco;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+footer>*{
+  padding: 1.4em;
+}
+
+
+
+/* APLICO ESTILO A LA BARRA DE SCROLL */
+body::-webkit-scrollbar {
+  width: 17px;
+}
+body::-webkit-scrollbar-track {
+  background: $negro;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: $blanco;
+  border-radius: 20px;
+  border: 5px solid $negro;
+}
+
+
+/*RESPONSIVE*/
+
+/*1024-769*/
+@media screen and (max-width: 1024px) and (min-width: 769px){
+
+  /*HEADER*/
+  .menu_ordenador li{
+    font-size: 12px;
+  }
+  .ultimoLi{
+    margin-left: 146px;
+  }
+
+  /*MAIN*/
+  main>section {
+    padding: 0.7em;
+  }
+  main>section>div{
+    padding: 2em;
+  }
+  main>section{
+    padding: 3em;
+  }
+}
+
+/*768-0*/
+@media screen and (max-width: 768px) and (min-width: 0px){
+
+  /*HEADER*/
+  .menu_ordenador{
+    display: none;
+  }
+  .menu_hamburguesa{
+    display: block;
+  }
+  .menu_movil.mostrar {
+    display: block;
+  }
+
+
+  /*MAIN*/
+  section{
+    display: block;
+  }
+  .texto_grande{
+    border: none;
+  }
+  main>section{
+    display: block;
+    padding: 0;
+  }
+  .texto_grande{
+    width: 100%;
+  }
+
+
+  /*FOOTER*/
+  footer{
+    display: grid;
+    text-align: center;
+  }
+
+  footer>*{
+    padding: 0.4em;
+  }
+
+}

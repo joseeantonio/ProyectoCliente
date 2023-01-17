@@ -1,0 +1,212 @@
+@import "src/styles/imports/reset", "src/styles/imports/variables";
+
+
+
+/*HEADER*/
+
+header .menu_ordenador ul li a{ /*Le damos collor blanco a las redirecciones del nav*/
+  color: $blanco;
+}
+header img{ /*Un valor maximo a la imagen del logo*/
+  max-width: 120px;
+}
+.boton{  /*Seleccionamos el resgistrarse y le creamos la caja con su color y sus estilos*/
+  background: $boton-registrarse;
+  border-radius: 5px;
+  text-align: center;
+  margin-right: 15px;
+  padding: 7px;
+}
+.menu_ordenador>ul li{  /*Ponemos todos los li en la misma linea y creamos separacion entre cada uno de ellos*/
+  padding: 15px;
+  display: inline-block;
+}
+.section{ /*Le damos color de fondo ,tamaño atodo lo que es el encabezado y lo alineamos con flex.*/
+  height: 63px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $negro;
+}
+.menu_hamburguesa{
+  background-color: transparent;
+  color: $blanco;
+  display: none;
+  cursor: pointer;
+  font-size: 30px;
+  margin-right: 20px;
+}
+.menu_movil{
+  display: none;
+  background-color: $negro;
+}
+.menu_movil ul{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.menu_movil li>a{
+  color: $blanco;
+  font-size: 15px;
+  margin: 10px;
+}
+
+
+/*MAIN*/
+
+main{
+  width: 100%;
+  height: 700px;
+  background: linear-gradient(230.2deg, rgba(24, 95, 202, 0.08) 0%, rgba(24, 95, 202, 0.18) 13.54%,
+          rgba(24, 95, 202, 0.28) 30.75%, rgba(24, 95, 202, 0.7) 76.6%, #185FCA 107.35%);
+}
+label{
+  padding-left:44px ;
+  padding-top: 20px;
+}
+main div>h1{
+  text-align: center;
+}
+section{
+  width: 100%;
+  height: 100%;
+}
+.colocar{
+  width: 100%;
+  padding-top: 47px;
+}
+.caja{
+  position: relative;
+  border-radius: 10px;
+  background: rgba(255, 255, 255,.65);
+  width: 340px;
+  height: 500px;
+  margin: 0 auto;
+  padding-top: 30px;
+}
+form{
+  display: flex;
+  flex-direction: column;
+}
+input{
+  border: none;
+  border-bottom: 1px solid;
+  border-radius: 0;
+  display: block;
+  width: 255px;
+  height: 27px;
+  margin: 11px auto 0;
+  background: none;
+}
+input[type=checkbox]{
+  width: 13px;
+  margin: 0;
+}
+.texto{
+  font-weight: bold;
+}
+.boton_registro{ /*boton de registro*/
+  background-color: $boton-registrarse;
+  color: $blanco;
+  border: none;
+  width: 112px;
+  height: 25px;
+  margin: 0 auto;
+  font-weight: bold;
+
+  border-radius: 5px;
+}
+main p{
+  text-align: center;
+}
+h1{
+  font-family: Inter;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 19px;
+}
+form>label{
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 19px;
+}
+form>label:first-child{
+  padding-top: 42px;
+}
+form>div{
+  padding-top: 42px;
+  font-size: 13px;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 22px;
+  align-items: center;
+}
+
+
+/*FOOTER*/
+
+footer{ /*Le indicamos estilos al footer y lo alineamos */
+  background-color: $negro;
+  color: $blanco;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+footer>*{
+  padding: 1.4em;
+}
+
+
+/* APLICO ESTILO A LA BARRA DE SCROLL */
+body::-webkit-scrollbar {
+  width: 17px;
+}
+body::-webkit-scrollbar-track {
+  background: $negro;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: $blanco;
+  border-radius: 20px;
+  border: 5px solid $negro;
+}
+
+
+/*RESPONSIVE*/
+
+/*1024-769*/
+@media screen and (max-width: 1024px) and (min-width: 769px){
+
+  /*HEADER*/
+  .menu_ordenador li{
+    font-size: 12px;
+  }
+
+}
+
+/*768-0*/
+@media screen and (max-width: 768px) and (min-width: 0px){
+
+  /*HEADER*/
+  .menu_ordenador{
+    display: none;
+  }
+  .menu_hamburguesa{
+    display: block;
+  }
+  .menu_movil.mostrar {
+    display: block;
+  }
+
+  /*FOOTER*/
+  footer{
+    display: grid;
+    text-align: center;
+  }
+  footer>*{
+    padding: 0.4em;
+  }
+
+}

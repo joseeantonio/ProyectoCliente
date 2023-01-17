@@ -1,0 +1,227 @@
+@import "src/styles/imports/reset", "src/styles/imports/variables";
+
+
+
+/*HEADER*/
+
+header .menu_ordenador ul li a{ /*Le damos collor blanco a las redirecciones del nav*/
+  color: $blanco;
+}
+header img{ /*Un valor maximo a la imagen del logo*/
+  max-width: 120px;
+}
+.boton{  /*Seleccionamos el resgistrarse y le creamos la caja con su color y sus estilos*/
+  background: $boton-registrarse;
+  border-radius: 5px;
+  text-align: center;
+  margin-right: 15px;
+  padding: 7px;
+}
+.menu_ordenador>ul div {  /*Ponemos todos los li en la misma linea y creamos separacion entre cada uno de ellos*/
+  padding: 15px;
+  display: inline-block;
+}
+.menu_ordenador>ul div li{  /*Ponemos todos los li en la misma linea y creamos separacion entre cada uno de ellos*/
+  padding: 15px;
+  display: inline-block;
+}
+.section{ /*Le damos color de fondo ,tamaño atodo lo que es el encabezado y lo alineamos con flex.*/
+  height: 63px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $negro;
+}
+.menu_hamburguesa{ /*con el display none lo ocultamos para que no se muestre*/
+  background-color: transparent;
+  color: $blanco;
+  display: none;
+  cursor: pointer;
+  font-size: 30px;
+  margin-right: 20px;
+}
+.menu_movil{ /*Hacemos lo mismo con el menu mocil para que no se muestre*/
+  display: none;
+  background-color: $negro;
+}
+.menu_movil ul{ /*Le damos estilo a el menu movil*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.menu_movil li>a{
+  color: $blanco;
+  font-size: 15px;
+  margin: 10px;
+}
+
+
+/*MAIN*/
+
+main{ /*adaptamos el ancho y predeterminamos el ancho y metemos imagen de fondo con sus diferentes atributos*/
+  width: 100%;
+  height: 700px;
+  background-image: url("../img/img_fondo_index.png");
+  background-size: cover;
+  background-position: center;
+}
+main>*{
+  display: flex;
+  justify-content: center;
+}
+a.boton_principal:hover, a.boton_principal:active{ /*Cuando estamos encima se disminuira el tamaño*/
+  font-size: 150%;
+}
+main a{
+  color: $blanco;
+  align-items: center;
+  background: $boton-registrarse;
+  border-radius: 5px;
+  height: 47px;
+  width: 195px;
+  margin: 0 auto;
+  font-size: 27px;
+}
+main p {
+  font-weight: bold;
+  font-size: 27px;
+  line-height: 68px;
+}
+main h1{
+  padding-top: 220px;
+  font-weight: bold;
+  font-size: 52px;
+}
+
+
+
+/*FOOTER*/
+
+footer{ /*Le indicamos estilos al footer y lo alineamos */
+  background-color: $negro;
+  color: $blanco;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+footer>*{
+  padding: 1.4em;
+}
+
+
+
+/* APLICO ESTILO A LA BARRA DE SCROLL */
+body::-webkit-scrollbar {
+  width: 17px;
+}
+body::-webkit-scrollbar-track {
+  background: $negro;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: $blanco;
+  border-radius: 20px;
+  border: 5px solid $negro;
+}
+
+
+
+/*RESPONSIVE*/
+
+/*1024-769*/
+@media screen and (max-width: 1024px) and (min-width: 769px){
+  .menu_ordenador li{ /* reducimos el tamaño de la fuente en el encabezado */
+    font-size: 12px;
+  }
+}
+
+
+/*768-0*/
+@media screen and (max-width: 768px) and (min-width: 0px){
+
+  /*HEADER*/
+  .menu_ordenador{ /* ocultamos el menu de ordenador */
+    display: none;
+  }
+  .menu_hamburguesa{ /*y ahora mostramos el menu hambuerguqesa que va a ocupar el lugar del otro encabezado*/
+    display: block;
+  }
+  .menu_movil.mostrar { /*cuando a la clase manu_movil se le añada la clase mostrar tambien se mostrara lo que es el menu_movil
+                          de esta forma lo que haremos es que al pulsar en el boton de menu_hamburguesa se le añada a menu_movil la clase mostrar
+                          (archivo script, main.js)*/
+    display: block;
+  }
+
+
+  /*MAIN*/
+  main a{ /*bajamos el tamaño 4px*/
+    font-size: 16px;
+    height: 43px;
+    width: 187px;
+  }
+  main p{
+    font-size: 16px;
+  }
+  main h1{
+    font-size: 41px;
+  }
+  main a{
+    width: 125px;
+  }
+
+
+  /*FOOTER*/
+  footer{
+    display: grid;
+    text-align: center;
+  }
+  footer>*{
+    padding: 0.4em;
+  }
+
+}
+
+
+
+
+@media (prefers-color-scheme: light) {  /* lo que hacemos es ver si esta el dispositivo en modo claro y aplicamos los siguientes estilos */
+
+  /*HEADER*/
+  .section {background-color: $blanco;}
+  header .menu_ordenador ul li a {color: $negro}
+  .menu_ordenador > ul > li:last-child > a {color: $blanco}
+  .menu_hamburguesa {color: $negro}
+  header .menu_movil ul {background-color: $blanco}
+  .menu_movil li > a {color: $negro}
+
+  /*FOOTER*/
+  footer {background-color: $blanco;color: $negro}
+
+
+  /*BARRA SCROLL*/
+  body::-webkit-scrollbar-track {
+    background: $blanco;
+  }
+  body::-webkit-scrollbar-thumb {
+    background-color: $negro;
+    border: 5px solid $blanco;
+  }
+}
+
+
+
+
+
+
+
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+.card-listaPokemon {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}

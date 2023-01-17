@@ -1,0 +1,315 @@
+@import "src/styles/imports/reset", "src/styles/imports/variables";
+
+/*HEADER*/
+
+header .menu_ordenador ul li a{ /*Le damos collor blanco a las redirecciones del nav*/
+  color: $blanco;
+}
+header img{ /*Un valor maximo a la imagen del logo*/
+  max-width: 120px;
+}
+.ultimoLi{  /*Seleccionamos el resgistrarse y le creamos la caja con su color y sus estilos*/
+  margin-left: 141px;
+  font-size: 22px;
+}
+.menu_ordenador>ul li{  /*Ponemos todos los li en la misma linea y creamos separacion entre cada uno de ellos*/
+  padding: 15px;
+  display: inline-block;
+}
+.section{ /*Le damos color de fondo ,tamaño atodo lo que es el encabezado y lo alineamos con flex.*/
+  height: 63px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $negro;
+}
+.menu_hamburguesa{
+  background-color: transparent;
+  color: $blanco;
+  display: none;
+  cursor: pointer;
+  font-size: 30px;
+  margin-right: 20px;
+}
+.menu_movil{
+  display: none;
+  background-color: black;
+}
+.menu_movil ul{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.menu_movil li>a{
+  color: $blanco;
+  font-size: 15px;
+  margin: 10px;
+}
+
+
+
+/*MAIN*/
+
+main>div{
+  background-image: url("../../../../diseño/RecuperacionMaquetacion/src/assets/img/img_fondo_encabezado.png");
+  width: 100%;
+  height: 159px;
+  position: relative;
+  background-repeat:no-repeat ;
+  background-size: cover;
+  background-position: center;
+  display: block;
+  align-items: center;
+}
+main>div>h1{
+  text-align: center;
+  padding-top: 52px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
+  color: $blanco;
+}
+main>section{
+  background-color: rgba(24, 95, 202,.75);
+  position: relative;
+  background-repeat:no-repeat ;
+  background-size: cover;
+  background-position: center;
+  display: block;
+  align-items: center;
+}
+main>section>div{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+}
+/*DIFERENTES TAMAÑOS PARA CADA EVOLUCION*/
+.primera_evolucion{
+  max-height: 126px;
+  margin-top: 18%;
+  width: auto;
+}
+.segunda_evolucion{
+  max-height: 166px;
+  margin-top: 11%;
+  width: auto;
+}
+.tercera_evolucion{
+  max-height: 206px;
+  margin-top: 4%;
+  width: auto;
+}
+main h3{
+  font-family: Inter;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 54px;
+  line-height: 65px;
+  text-align: center;
+  color: $negro;
+}
+main>section>div>div{
+  background-color: white;
+  width: 287px;
+  height: 256px;
+  margin-top: 108px;
+  box-shadow: -5px 5px 5px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 29px;
+}
+main>section>div>div{
+  text-align: center;
+}
+main>section>div>div:first-child>a>h3{
+  padding-top: 36px;
+}
+.separador{ /*estilo para las flechas*/
+  padding-top: 16px;
+}
+main section img{
+  margin: 0 auto;
+}
+main{
+  min-height: 1300px;
+}
+.evolucion:last-child{
+  padding-bottom: 120px;
+}
+/*utilizo la clase de las flechas para darle tamaño*/
+.fa.fa-arrow-right{
+  font-size: 27px;
+  padding-top: 108px;
+}
+.fa.fa-arrow-down{ /*estas flechas nos van a servir para el responsive ya que vamos a ponerlo en columna y las
+                    flechas deberan de ir para abajo en vez de para la derecha, por lo que ocultaremos las otras y
+                    mostraremos estas.*/
+  display: none;
+}
+
+
+
+/*FOOTER*/
+
+footer{ /*Le indicamos estilos al footer y lo alineamos */
+  background-color: $negro;
+  color: $blanco;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+footer>*{
+  padding: 1.4em;
+}
+
+
+/* APLICO ESTILO A LA BARRA DE SCROLL */
+body::-webkit-scrollbar {
+  width: 17px;
+}
+body::-webkit-scrollbar-track {
+  background: $negro;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: $blanco;
+  border-radius: 20px;
+  border: 5px solid $negro;
+}
+
+
+/*RESPONSIVE*/
+
+/*1024-769*/
+@media screen and (max-width: 1024px) and (min-width: 769px){
+  /*HEADER*/
+  .menu_ordenador li{
+    font-size: 12px;
+  }
+  .ultimoLi{
+    margin-left: 146px;
+  }
+
+
+  /*MAIN*/
+  main h3{
+    font-size: 39px;
+  }
+  main>section>div>div{
+    width: 222px;
+    height: 201px;
+  }
+  .segunda_evolucion{
+    max-height: 143px;
+    margin-top: 9%;
+  }
+  .primera_evolucion{
+    max-height: 103px;
+  }
+  .tercera_evolucion{
+    max-height: 174px;
+    margin-top: 3%;
+  }
+  .separador{
+    padding-top: 0px;
+  }
+  main > section > div > div:first-child > a > h3{
+    padding-top: 22px;
+  }
+  main > section > div > div:nth-child(2) > a > h3{
+    padding-top: 3px;
+  }
+  main > section > div > div:last-child > a > h3{
+    margin-top: -15px;
+  }
+  main{
+    min-height: 0px;
+  }
+}
+
+/*768-0*/
+@media screen and (max-width: 768px) and (min-width: 0px){
+
+  /*HEADER*/
+  .menu_ordenador{
+    display: none;
+  }
+  .menu_hamburguesa{
+    display: block;
+  }
+  .menu_movil.mostrar {
+    display: block;
+  }
+
+  /*MAIN*/
+  main a{ /*bajamos el tamaño 4px*/
+    font-size: 23px;
+    height: 43px;
+    width: 187px;
+  }
+  main p{
+    font-size: 23px;
+  }
+  main h1{
+    font-size: 48px;
+  }
+  .evolucion{
+    display: grid;
+  }
+  main > section > div > div{
+    width: 264px;
+    height: 233px;
+  }
+  main h3{
+    width: 265px;
+    font-size: 37px;
+  }
+  main > section > div > div:nth-child(2) > a > h3{
+    padding-top: 1px;
+  }
+  /*DAMOS DIFERENTES MARGIN YA QUE AL CAMBIAR EL TAMAÑO DE LA IMAGEN SE NOS DESCOLOCA EL NOMBRE DE CADA EVOLUCION*/
+  .segunda_evolucion{
+    margin: 15% 0px 0px 53px;
+  }
+  .tercera_evolucion{
+    margin: 12% 0px 0px 37px;
+  }
+  .primera_evolucion{
+    margin: 25% 0px 0px 68px;
+  }
+  .texto_charizard{
+    padding-top: 26px;
+  }
+  .texto_blastoise{
+    margin-top: -17px;
+  }
+  main > section > div > div:first-child > a > h3{
+    padding-top: 23px;
+  }
+  .separador{
+    padding-top: 2px;
+  }
+  main > div > h1{
+    font-size: 34px;
+  }
+  .fa.fa-arrow-right{
+    display: none;
+  }
+  .fa.fa-arrow-down{
+    display: block;
+    margin-bottom: -108px;
+    font-size: 27px;
+    text-align: center;
+  }
+
+
+  /*FOOTER*/
+  footer{
+    display: grid;
+    text-align: center;
+  }
+  footer>*{
+    padding: 0.4em;
+  }
+}
